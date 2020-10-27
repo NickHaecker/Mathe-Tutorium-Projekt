@@ -4,12 +4,12 @@ namespace Projekt
 {
     class Pokemon
     {
-        private int id { get; set; }
-        private Boolean matched { get; set; }
+        public int id { get; set; }
+        public Boolean matched { get; set; }
 
-        private int[] favourites = new int[3];
+        public int[] favourites = new int[3];
 
-        private int matchedId { get; set; }
+        public int matchedId { get; set; }
 
         public Pokemon(int Id, Boolean Matched, int[] Favourites, int MatchedId)
         {
