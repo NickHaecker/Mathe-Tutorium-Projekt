@@ -57,7 +57,7 @@ namespace Projekt
                         // Console.WriteLine("CountDoku: {0}", t);
                         // Console.WriteLine("Count: {0}", f);
                         // Console.WriteLine("enterung fhor2");
-                        int favouritePokemon = trainer[t].favourites[f];
+                        int favouritePokemon = trainer[t].favourites[f] - 1;
                         // Console.WriteLine("Trainer:{0} ", trainer[t].id);
                         // Console.WriteLine("Fav Pok:{0}", favouritePokemon);
                         // Console.WriteLine("Cut for2");
