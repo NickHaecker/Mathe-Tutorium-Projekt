@@ -18,8 +18,8 @@ namespace Projekt
             trainer.Add(new Trainer(1, false, new int[3] { 2, 1, 3 }, 0));
             trainer.Add(new Trainer(2, false, new int[3] { 2, 3, 1 }, 0));
             trainer.Add(new Trainer(3, false, new int[3] { 1, 3, 2 }, 0));
-            Console.WriteLine(pokemons);
-            Console.WriteLine(trainer);
+            // Console.WriteLine(pokemons);
+            // Console.WriteLine(trainer);
 
             Maschine(pokemons, trainer);
 
@@ -27,6 +27,7 @@ namespace Projekt
 
         private static void Maschine(List<Pokemon> pokemon, List<Trainer> trainer)
         {
+            // Console.WriteLine("start");
             foreach (Pokemon poke in pokemon)
             {
                 poke.matched = false;
@@ -38,47 +39,74 @@ namespace Projekt
                 trainee.matchedId = 0;
             }
             int freeTrainer = trainer.Count;
-            //  Console.WriteLine("Count: {0}", parts.Count);
+            // Console.WriteLine("trainer:{0}", freeTrainer);
             while (freeTrainer > 0)
             {
-                // Console.WriteLine("enterung wheil");
+                // Console.WriteLine("step2");
                 int t;
                 for (t = 0; t < trainer.Count; t++)
                 {
-                    // Console.WriteLine("enterung fhor1");
+                    // Console.WriteLine("step3");
                     if (trainer[t].matched == true)
                     {
-                        // Console.WriteLine("enterung iv");
+                        // Console.WriteLine("step4");
                         break;
                     }
 
                     for (int f = 0; f < trainer[t].favourites.Length; f++)
                     {
-                        // Console.WriteLine("CountDoku: {0}", t);
-                        // Console.WriteLine("Count: {0}", f);
-                        // Console.WriteLine("enterung fhor2");
                         int favouritePokemon = trainer[t].favourites[f] - 1;
-                        // Console.WriteLine("Trainer:{0} ", trainer[t].id);
-                        // Console.WriteLine("Fav Pok:{0}", favouritePokemon);
-                        // Console.WriteLine("Cut for2");
-                        // Console.WriteLine("Count: {0}", parts.Count);
+                        // Console.WriteLine("id: {0}", favouritePokemon);
+
                         if (pokemon[favouritePokemon].matched == false)
                         {
+                            // Console.WriteLine("bliblablubbffffff");
                             trainer[t].matched = true;
                             trainer[t].matchedId = favouritePokemon;
                             pokemon[favouritePokemon].matched = true;
                             pokemon[favouritePokemon].matchedId = trainer[t].id;
+                            freeTrainer--;
                         }
-                        // Console.WriteLine("Trainer:", trainer);
-                        // Console.WriteLine("Poke", pokemon);
-                        // else{
+                        else
+                        {
+                            int matchedTrainer = trainer[pokemon[favouritePokemon].matchedId].id;
+                            // Console.WriteLine("bliblablubb: {0}", matchedTrainer);
+                            if (TrainervsTrainer(pokemon[favouritePokemon].id - 1, trainer[t].id, matchedTrainer, pokemon, trainer) == false) //neuer trainer ist besser als der alte Trainer! Bitte switch mich!
+                            {
+                                trainer[matchedTrainer].matchedId = 0;
+                                trainer[matchedTrainer].matched = false;
 
-                        // }
+                                trainer[t].matched = true;
+                                trainer[t].matchedId = pokemon[favouritePokemon].id;
+                                pokemon[favouritePokemon].matchedId = trainer[t].id;
+                                pokemon[favouritePokemon].matched = true;
+
+                                var favouriteList = trainer[matchedTrainer].favourites;
+
+                            }
+                        }
                     }
-                    // Console.WriteLine("cut for1");
                 }
-                freeTrainer--;
             }
+            Console.WriteLine("trainer:", trainer);
+            Console.WriteLine("pokemon:", pokemon);
+        }
+        private static bool TrainervsTrainer(int currentPokemon, int newTrainer, int oldTrainer, List<Pokemon> pokemon, List<Trainer> trainer)
+        {
+            for (int i = 0; i < trainer.Count; i++)
+            {
+                if (oldTrainer == pokemon[currentPokemon].favourites[i])
+                {
+                    // nein! switch nicht
+                    return true;
+                }
+                if (newTrainer == pokemon[currentPokemon].favourites[i])
+                {
+                    // ja aber gerne doch
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }
