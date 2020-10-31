@@ -44,6 +44,8 @@ namespace Projekt
             {
                 Console.WriteLine("-----start while-----");
                 int t;
+
+
                 for (t = 0; t < trainer.Count; t++)
                 {
                     // Console.WriteLine("step3");
@@ -116,6 +118,7 @@ namespace Projekt
                         // trainer[t].favourites = -1;
                         // break;
                         // }
+                        // break;
 
                     }
                 }
