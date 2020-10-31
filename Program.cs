@@ -12,12 +12,12 @@ namespace Projekt
             List<Pokemon> pokemons = new List<Pokemon>();
             List<Trainer> trainer = new List<Trainer>();
             // Add parts to the list.
-            pokemons.Add(new Pokemon(1, false, new int[3] { 2, 1, 3 }, 0));
-            pokemons.Add(new Pokemon(2, false, new int[3] { 3, 2, 1 }, 0));
-            pokemons.Add(new Pokemon(3, false, new int[3] { 1, 3, 2 }, 0));
-            trainer.Add(new Trainer(1, false, new int[3] { 2, 1, 3 }, 0));
-            trainer.Add(new Trainer(2, false, new int[3] { 2, 3, 1 }, 0));
-            trainer.Add(new Trainer(3, false, new int[3] { 1, 3, 2 }, 0));
+            pokemons.Add(new Pokemon(1, false, new int[3] { 1, 0, 3 }, 0));
+            pokemons.Add(new Pokemon(2, false, new int[3] { 2, 1, 0 }, 0));
+            pokemons.Add(new Pokemon(3, false, new int[3] { 0, 2, 1 }, 0));
+            trainer.Add(new Trainer(1, false, new int[3] { 1, 0, 2 }, 0));
+            trainer.Add(new Trainer(2, false, new int[3] { 1, 2, 0 }, 0));
+            trainer.Add(new Trainer(3, false, new int[3] { 0, 2, 1 }, 0));
             // Console.WriteLine(pokemons);
             // Console.WriteLine(trainer);
 
@@ -55,7 +55,7 @@ namespace Projekt
 
                     for (int f = 0; f < trainer[t].favourites.Length; f++)
                     {
-                        int favouritePokemon = trainer[t].favourites[f] - 1;
+                        int favouritePokemon = trainer[t].favourites[f];
                         // Console.WriteLine("id: {0}", favouritePokemon);
 
                         if (pokemon[favouritePokemon].matched == false)
@@ -71,7 +71,7 @@ namespace Projekt
                         {
                             int matchedTrainer = trainer[pokemon[favouritePokemon].matchedId].id;
                             // Console.WriteLine("bliblablubb: {0}", matchedTrainer);
-                            if (TrainervsTrainer(pokemon[favouritePokemon].id - 1, trainer[t].id, matchedTrainer, pokemon, trainer) == false) //neuer trainer ist besser als der alte Trainer! Bitte switch mich!
+                            if (TrainervsTrainer(pokemon[favouritePokemon].id, trainer[t].id, matchedTrainer, pokemon, trainer) == false) //neuer trainer ist besser als der alte Trainer! Bitte switch mich!
                             {
                                 trainer[matchedTrainer].matchedId = 0;
                                 trainer[matchedTrainer].matched = false;
@@ -82,7 +82,6 @@ namespace Projekt
                                 pokemon[favouritePokemon].matched = true;
 
                                 var favouriteList = trainer[matchedTrainer].favourites;
-
                             }
                         }
                     }
