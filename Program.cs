@@ -70,7 +70,7 @@ namespace Projekt
                         {
                             Console.WriteLine("Matchig erfolgreich! FreeTrainer -1 ");
                             trainer[t].matched = true;
-                            trainer[t].matchedId = favouritePokemon;
+                            trainer[t].matchedId = pokemon[favouritePokemon].id;
                             pokemon[favouritePokemon].matched = true;
                             pokemon[favouritePokemon].matchedId = trainer[t].id;
                             freeTrainer--;
@@ -103,13 +103,13 @@ namespace Projekt
                         // trainer[t].favourites.SetValue(-1, f);
                         // if (trainer[t].matched == true)
                         // {
-                        for (int g = 0; g == f; g++)
-                        {
-                            trainer[t].favourites.SetValue(-1, g);
-                            Console.WriteLine("START PURGE ! :)");
-                            // break;
+                        // for (int g = 0; g == f; g++)
+                        // {
+                        //     trainer[t].favourites.SetValue(-1, g);
+                        //     Console.WriteLine("START PURGE ! :)");
+                        //     // break;
 
-                        }
+                        // }
                         // }
 
                         // }
@@ -119,7 +119,6 @@ namespace Projekt
                         // break;
                         // }
                         // break;
-
                     }
                 }
             }
@@ -133,15 +132,11 @@ namespace Projekt
                 if (oldTrainer == pokemon[currentPokemon].favourites[i])
                 {
                     Console.WriteLine("Trainer OLD gewinnt! Kein switch!");
-
-                    // nein! switch nicht
                     return true;
                 }
                 if (newTrainer == pokemon[currentPokemon].favourites[i])
                 {
                     Console.WriteLine("Trainer NEW gewinnt! Switch!");
-
-                    // ja aber gerne doch
                     return false;
                 }
             }

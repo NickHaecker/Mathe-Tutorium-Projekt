@@ -5,6 +5,7 @@ namespace Projekt
     class Trainer
     {
         public int id { get; set; }
+
         public Boolean matched { get; set; }
 
         public int[] favourites = new int[3];
