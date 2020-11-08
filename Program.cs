@@ -81,7 +81,7 @@ namespace Projekt
                             }
                         }
                         Console.WriteLine("gelöscht wird pokemon:" + trainer[t].favourites[f] + " von Trainer:" + trainer[t].id);
-                        trainer[t].favourites.RemoveAt(0);
+                        trainer[t].favourites.RemoveAt(f);
 
                         Console.WriteLine("-----! Ende Zyklus !------");
                     }
