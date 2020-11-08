@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Collections;
 
 namespace Projekt
 {
@@ -12,12 +12,12 @@ namespace Projekt
             List<Pokemon> pokemons = new List<Pokemon>();
             List<Trainer> trainer = new List<Trainer>();
             // Add parts to the list.
-            pokemons.Add(new Pokemon(0, false, new int[3] { 1, 0, 2 }, -1));
-            pokemons.Add(new Pokemon(1, false, new int[3] { 2, 1, 0 }, -1));
-            pokemons.Add(new Pokemon(2, false, new int[3] { 0, 2, 1 }, -1));
-            trainer.Add(new Trainer(0, false, new int[3] { 1, 0, 2 }, -1));
-            trainer.Add(new Trainer(1, false, new int[3] { 1, 2, 0 }, -1));
-            trainer.Add(new Trainer(2, false, new int[3] { 0, 2, 1 }, -1));
+            pokemons.Add(new Pokemon(0, false, new List<int> { 1, 0, 2 }, -1));
+            pokemons.Add(new Pokemon(1, false, new List<int> { 2, 1, 0 }, -1));
+            pokemons.Add(new Pokemon(2, false, new List<int> { 0, 2, 1 }, -1));
+            trainer.Add(new Trainer(0, false, new List<int> { 1, 0, 2 }, -1));
+            trainer.Add(new Trainer(1, false, new List<int> { 1, 2, 0 }, -1));
+            trainer.Add(new Trainer(2, false, new List<int> { 0, 2, 1 }, -1));
             // Console.WriteLine(pokemons);
             // Console.WriteLine(trainer);
 
@@ -55,7 +55,7 @@ namespace Projekt
                         break;
                     }
 
-                    for (int f = 0; f < trainer[t].favourites.Length; f++)
+                    for (int f = 0; f < trainer[t].favourites.Count; f++)
                     {
                         // if (trainer[t].favourites[f] == -1)
                         // {
@@ -83,8 +83,8 @@ namespace Projekt
                             int matchedTrainer = trainer[pokemon[favouritePokemon].matchedId].id;
                             Console.WriteLine("# Pokemon already matched !");
                             Console.WriteLine("START DDDDUELL !!!");
-
-                            if (TrainervsTrainer(pokemon[favouritePokemon].id, trainer[t].id, matchedTrainer, pokemon, trainer) == false) //neuer trainer ist besser als der alte Trainer! Bitte switch mich!
+                            //neuer trainer ist besser als der alte Trainer! Bitte switch mich!
+                            if (TrainervsTrainer(pokemon[favouritePokemon].id, trainer[t].id, matchedTrainer, pokemon, trainer) == false)
                             {
                                 trainer[matchedTrainer].matchedId = -1;
                                 trainer[matchedTrainer].matched = false;
@@ -100,6 +100,17 @@ namespace Projekt
                             }
                             // break;
                         }
+                        Console.WriteLine("START PURGE ! :)");
+                        Console.WriteLine("gelöscht wird pokemon: {0}" + trainer[t].favourites[0] + " von Trainer: {0}" + trainer[t]);
+                        trainer[t].favourites.RemoveAt(f);
+                        // if (t < 2)
+                        // {
+                        //     t += 1;
+                        // }
+
+                        // break;
+
+
                         // trainer[t].favourites.SetValue(-1, f);
                         // if (trainer[t].matched == true)
                         // {
