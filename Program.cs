@@ -48,6 +48,7 @@ namespace Projekt
 
                 for (t = 0; t < trainer.Count; t++)
                 {
+                    Console.WriteLine("t{0}" + t);
                     // Console.WriteLine("step3");
                     if (trainer[t].matched == true)
                     {
@@ -96,6 +97,7 @@ namespace Projekt
                                 Console.WriteLine("Trainer {0} " + trainer[t].id + " Pokemon {0} = " + trainer[t].matchedId);
 
                                 Console.WriteLine("-----! Ende Zyklus !------");
+
                                 // break;
                             }
                             // break;
@@ -130,6 +132,11 @@ namespace Projekt
                         // break;
                         // }
                         // break;
+                    }
+                    if (t == 2)
+                    {
+                        Console.WriteLine("reset");
+                        t = -1;
                     }
                 }
             }
