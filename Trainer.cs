@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Projekt
 {
@@ -8,11 +9,11 @@ namespace Projekt
 
         public Boolean matched { get; set; }
 
-        public int[] favourites = new int[3];
+        public List<int> favourites = new List<int>();
 
         public int matchedId { get; set; }
 
-        public Trainer(int Id, Boolean Matched, int[] Favourites, int MatchedId)
+        public Trainer(int Id, Boolean Matched, List<int> Favourites, int MatchedId)
         {
             id = Id;
             matched = Matched;
