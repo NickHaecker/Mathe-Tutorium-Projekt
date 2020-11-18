@@ -13,8 +13,8 @@ namespace Projekt
 
             pokemons.Add(new Pokemon(0, false, new List<int> { 1, 0, 2 }, -1));
             pokemons.Add(new Pokemon(1, false, new List<int> { 2, 1, 0 }, -1));
-            pokemons.Add(new Pokemon(2, false, new List<int> { 2, 1, 0 }, -1));
-            trainer.Add(new Trainer(0, false, new List<int> { 2, 1, 0 }, -1));
+            pokemons.Add(new Pokemon(2, false, new List<int> { 0, 2, 1 }, -1));
+            trainer.Add(new Trainer(0, false, new List<int> { 1, 0, 2 }, -1));
             trainer.Add(new Trainer(1, false, new List<int> { 1, 2, 0 }, -1));
             trainer.Add(new Trainer(2, false, new List<int> { 0, 2, 1 }, -1));
 
