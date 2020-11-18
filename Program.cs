@@ -8,18 +8,25 @@ namespace Projekt
     {
         static void Main(string[] args)
         {
-            List<Pokemon> pokemons = new List<Pokemon>();
             List<Trainer> trainer = new List<Trainer>();
 
-            pokemons.Add(new Pokemon(0, false, new List<int> { 1, 0, 2 }, -1));
-            pokemons.Add(new Pokemon(1, false, new List<int> { 2, 1, 0 }, -1));
-            pokemons.Add(new Pokemon(2, false, new List<int> { 0, 2, 1 }, -1));
-            trainer.Add(new Trainer(0, false, new List<int> { 1, 0, 2 }, -1));
-            trainer.Add(new Trainer(1, false, new List<int> { 1, 2, 0 }, -1));
-            trainer.Add(new Trainer(2, false, new List<int> { 0, 2, 1 }, -1));
+            trainer.Add(new Trainer(0, false, new List<int> { 2, 1, 4, 0, 3 }, -1));
+            trainer.Add(new Trainer(1, false, new List<int> { 0, 1, 4, 2, 3 }, -1));
+            trainer.Add(new Trainer(2, false, new List<int> { 3, 2, 1, 0, 4 }, -1));
+            trainer.Add(new Trainer(3, false, new List<int> { 0, 2, 3, 1, 4 }, -1));
+            trainer.Add(new Trainer(4, false, new List<int> { 0, 1, 3, 4, 2 }, -1));
+
+
+            List<Pokemon> pokemons = new List<Pokemon>();
+
+            pokemons.Add(new Pokemon(0, false, new List<int> { 2, 4, 1, 0, 3 }, -1));
+            pokemons.Add(new Pokemon(1, false, new List<int> { 4, 1, 0, 3, 2 }, -1));
+            pokemons.Add(new Pokemon(2, false, new List<int> { 3, 2, 4, 0, 1 }, -1));
+            pokemons.Add(new Pokemon(3, false, new List<int> { 0, 1, 2, 3, 4 }, -1));
+            pokemons.Add(new Pokemon(4, false, new List<int> { 1, 2, 3, 0, 4 }, -1));
+
 
             Maschine(pokemons, trainer);
-
         }
 
         private static void Maschine(List<Pokemon> pokemon, List<Trainer> trainer)
